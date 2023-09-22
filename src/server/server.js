@@ -4,8 +4,9 @@ import { indexTemplate } from "./indexTemplate"
 import { App } from "../App"
 import axios from "axios"
 
-const PORT = process.env.PORT || 3000
 const app = express()
+
+const PORT = process.env.PORT || 3000
 
 app.use("/static", express.static("./dist/client"))
 
