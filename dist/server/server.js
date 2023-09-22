@@ -302,6 +302,7 @@ const indexTemplate_1 = __webpack_require__(15);
 const App_1 = __webpack_require__(16);
 const axios_1 = __importDefault(__webpack_require__(3));
 const app = (0, express_1.default)();
+const PORT = process.env.PORT || 3000;
 app.use("/static", express_1.default.static("./dist/client"));
 app.get("/auth", (req, res) => {
     axios_1.default
@@ -317,8 +318,8 @@ app.get("/auth", (req, res) => {
 app.get("*", (req, res) => {
     res.send((0, indexTemplate_1.indexTemplate)(server_1.default.renderToString((0, App_1.App)())));
 });
-app.listen(3000, () => {
-    console.log("Server started on http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`);
 });
 
 
