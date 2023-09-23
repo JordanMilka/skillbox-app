@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -135,7 +135,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(35), exports);
+__exportStar(__webpack_require__(36), exports);
 
 
 /***/ }),
@@ -219,7 +219,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(80), exports);
+__exportStar(__webpack_require__(81), exports);
 
 
 /***/ }),
@@ -243,13 +243,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(37), exports);
 __exportStar(__webpack_require__(38), exports);
 __exportStar(__webpack_require__(39), exports);
 __exportStar(__webpack_require__(40), exports);
 __exportStar(__webpack_require__(41), exports);
 __exportStar(__webpack_require__(42), exports);
 __exportStar(__webpack_require__(43), exports);
+__exportStar(__webpack_require__(44), exports);
 
 
 /***/ }),
@@ -288,6 +288,12 @@ module.exports = require("react-dom");
 
 /***/ }),
 /* 12 */
+/***/ (function(module, exports) {
+
+module.exports = require("recoil");
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -296,14 +302,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(__webpack_require__(13));
-const server_1 = __importDefault(__webpack_require__(14));
-const indexTemplate_1 = __webpack_require__(15);
-const App_1 = __webpack_require__(16);
+const express_1 = __importDefault(__webpack_require__(14));
+const server_1 = __importDefault(__webpack_require__(15));
+const indexTemplate_1 = __webpack_require__(16);
+const App_1 = __webpack_require__(17);
 const axios_1 = __importDefault(__webpack_require__(3));
-const app = (0, express_1.default)();
+// import { compression } from "compression"
+// import helmet from "helmet"
 const PORT = process.env.PORT || 3000;
+const app = (0, express_1.default)();
 app.use("/static", express_1.default.static("./dist/client"));
+// app.use(compression())
+// app.use(helmet({ contentSecurityPolicy: false }))
 app.get("/auth", (req, res) => {
     axios_1.default
         .post("https://www.reddit.com/api/v1/access_token", `grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`, {
@@ -324,19 +334,19 @@ app.listen(PORT, () => {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -365,7 +375,7 @@ exports.indexTemplate = indexTemplate;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -399,20 +409,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const react_1 = __importStar(__webpack_require__(0));
-__webpack_require__(17);
-const root_1 = __webpack_require__(19);
-const Layout_1 = __webpack_require__(20);
-const userContext_1 = __webpack_require__(55);
-const redux_1 = __webpack_require__(56);
+__webpack_require__(18);
+const root_1 = __webpack_require__(20);
+const Layout_1 = __webpack_require__(21);
+const userContext_1 = __webpack_require__(56);
+const redux_1 = __webpack_require__(57);
 const react_redux_1 = __webpack_require__(1);
-const redux_devtools_extension_1 = __webpack_require__(57);
-const store_1 = __webpack_require__(58);
-const redux_thunk_1 = __importDefault(__webpack_require__(61));
-const useToken_1 = __webpack_require__(62);
+const redux_devtools_extension_1 = __webpack_require__(58);
+const store_1 = __webpack_require__(59);
+const redux_thunk_1 = __importDefault(__webpack_require__(62));
+const useToken_1 = __webpack_require__(63);
 const react_router_dom_1 = __webpack_require__(2);
-const CardsList_1 = __webpack_require__(63);
-const NoMatch_1 = __webpack_require__(110);
-const Post_1 = __webpack_require__(113);
+const CardsList_1 = __webpack_require__(64);
+const NoMatch_1 = __webpack_require__(111);
+const Post_1 = __webpack_require__(114);
 const store = (0, redux_1.createStore)(store_1.rootReducer, (0, redux_devtools_extension_1.composeWithDevTools)((0, redux_1.applyMiddleware)(redux_thunk_1.default)));
 function AppComponent() {
     const [mounted, setMounted] = (0, react_1.useState)(false);
@@ -435,11 +445,11 @@ exports.App = (0, root_1.hot)(() => react_1.default.createElement(AppComponent, 
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(18);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(19);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);"]);
 // Module
@@ -449,7 +459,7 @@ module.exports = exports;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -530,13 +540,13 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-hot-loader/root");
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -556,11 +566,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(21), exports);
+__exportStar(__webpack_require__(22), exports);
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -571,10 +581,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Layout = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const layout_sass_1 = __importDefault(__webpack_require__(22));
-const Header_1 = __webpack_require__(23);
-const Content_1 = __webpack_require__(50);
-const postContext_1 = __webpack_require__(53);
+const layout_sass_1 = __importDefault(__webpack_require__(23));
+const Header_1 = __webpack_require__(24);
+const Content_1 = __webpack_require__(51);
+const postContext_1 = __webpack_require__(54);
 const react_router_dom_1 = __webpack_require__(2);
 function Layout({ children }) {
     return (react_1.default.createElement("div", { className: layout_sass_1.default.layout },
@@ -588,7 +598,7 @@ exports.Layout = Layout;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -598,7 +608,7 @@ module.exports = {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -618,11 +628,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(24), exports);
+__exportStar(__webpack_require__(25), exports);
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -633,10 +643,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Header = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const header_sass_1 = __importDefault(__webpack_require__(25));
-const SearchBlock_1 = __webpack_require__(26);
-const ThreadTitle_1 = __webpack_require__(44);
-const SortBlock_1 = __webpack_require__(47);
+const header_sass_1 = __importDefault(__webpack_require__(26));
+const SearchBlock_1 = __webpack_require__(27);
+const ThreadTitle_1 = __webpack_require__(45);
+const SortBlock_1 = __webpack_require__(48);
 function Header() {
     return (react_1.default.createElement("header", { className: header_sass_1.default.header },
         react_1.default.createElement(SearchBlock_1.SearchBlock, null),
@@ -647,7 +657,7 @@ exports.Header = Header;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -657,7 +667,7 @@ module.exports = {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -677,11 +687,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(27), exports);
+__exportStar(__webpack_require__(28), exports);
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -692,8 +702,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchBlock = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const searchblock_sass_1 = __importDefault(__webpack_require__(28));
-const UserBlock_1 = __webpack_require__(29);
+const searchblock_sass_1 = __importDefault(__webpack_require__(29));
+const UserBlock_1 = __webpack_require__(30);
 const useUserData_1 = __webpack_require__(10);
 function SearchBlock() {
     const { data, loading } = (0, useUserData_1.useUserData)();
@@ -704,7 +714,7 @@ exports.SearchBlock = SearchBlock;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -714,7 +724,7 @@ module.exports = {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -734,11 +744,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(30), exports);
+__exportStar(__webpack_require__(31), exports);
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -749,8 +759,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserBlock = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const userblock_sass_1 = __importDefault(__webpack_require__(31));
-const Break_1 = __webpack_require__(32);
+const userblock_sass_1 = __importDefault(__webpack_require__(32));
+const Break_1 = __webpack_require__(33);
 const Text_1 = __webpack_require__(5);
 const Icons_1 = __webpack_require__(9);
 function UserBlock({ avatarSrc, username, loading }) {
@@ -764,7 +774,7 @@ exports.UserBlock = UserBlock;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -777,7 +787,7 @@ module.exports = {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -797,11 +807,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(33), exports);
+__exportStar(__webpack_require__(34), exports);
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -812,7 +822,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Break = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const break_sass_1 = __importDefault(__webpack_require__(34));
+const break_sass_1 = __importDefault(__webpack_require__(35));
 const classnames_1 = __importDefault(__webpack_require__(4));
 function Break(props) {
     const { inline = false, top = false, size, mobileSize, tabletSize, desktopSize } = props;
@@ -822,7 +832,7 @@ exports.Break = Break;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -853,7 +863,7 @@ module.exports = {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -864,7 +874,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Text = exports.EColor = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const text_sass_1 = __importDefault(__webpack_require__(36));
+const text_sass_1 = __importDefault(__webpack_require__(37));
 const classnames_1 = __importDefault(__webpack_require__(4));
 var EColor;
 (function (EColor) {
@@ -888,7 +898,7 @@ exports.Text = Text;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -933,7 +943,7 @@ module.exports = {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -954,7 +964,7 @@ exports.MenuIcon = MenuIcon;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -973,7 +983,7 @@ exports.CommentIcon = CommentIcon;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -992,7 +1002,7 @@ exports.RepostIcon = RepostIcon;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1011,7 +1021,7 @@ exports.BlockIcon = BlockIcon;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1030,7 +1040,7 @@ exports.SavePostIcon = SavePostIcon;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1049,7 +1059,7 @@ exports.WarningIcon = WarningIcon;
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1068,7 +1078,7 @@ exports.IconAnon = IconAnon;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1088,11 +1098,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(45), exports);
+__exportStar(__webpack_require__(46), exports);
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1103,7 +1113,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreadTitle = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const threadtitle_sass_1 = __importDefault(__webpack_require__(46));
+const threadtitle_sass_1 = __importDefault(__webpack_require__(47));
 function ThreadTitle() {
     return (react_1.default.createElement("h1", { className: threadtitle_sass_1.default.threadTitle }, "Header"));
 }
@@ -1111,7 +1121,7 @@ exports.ThreadTitle = ThreadTitle;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1121,7 +1131,7 @@ module.exports = {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1141,11 +1151,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(48), exports);
+__exportStar(__webpack_require__(49), exports);
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1156,7 +1166,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SortBlock = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const sortblock_sass_1 = __importDefault(__webpack_require__(49));
+const sortblock_sass_1 = __importDefault(__webpack_require__(50));
 function SortBlock() {
     return react_1.default.createElement("div", { className: sortblock_sass_1.default.sortBlock }, "sorting dropdown");
 }
@@ -1164,7 +1174,7 @@ exports.SortBlock = SortBlock;
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1174,7 +1184,7 @@ module.exports = {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1194,11 +1204,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(51), exports);
+__exportStar(__webpack_require__(52), exports);
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1209,7 +1219,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Content = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const content_sass_1 = __importDefault(__webpack_require__(52));
+const content_sass_1 = __importDefault(__webpack_require__(53));
 function Content({ children }) {
     return react_1.default.createElement("main", { className: content_sass_1.default.content }, children);
 }
@@ -1217,7 +1227,7 @@ exports.Content = Content;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1227,7 +1237,7 @@ module.exports = {
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1238,7 +1248,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostContextProvider = exports.postContext = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const usePostData_1 = __webpack_require__(54);
+const usePostData_1 = __webpack_require__(55);
 exports.postContext = react_1.default.createContext([]);
 function PostContextProvider({ children }) {
     const [data] = (0, usePostData_1.usePostData)();
@@ -1249,7 +1259,7 @@ exports.PostContextProvider = PostContextProvider;
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1296,7 +1306,7 @@ exports.usePostData = usePostData;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1318,19 +1328,19 @@ exports.UserContextProvider = UserContextProvider;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-devtools-extension");
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1338,9 +1348,9 @@ module.exports = require("redux-devtools-extension");
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateComment = exports.rootReducer = void 0;
 const actions_1 = __webpack_require__(6);
-const reducer_1 = __webpack_require__(59);
+const reducer_1 = __webpack_require__(60);
 const actions_2 = __webpack_require__(7);
-const reducer_2 = __webpack_require__(60);
+const reducer_2 = __webpack_require__(61);
 const initialState = {
     commentText: "Hello! ",
     saveToken: { token: "" },
@@ -1367,7 +1377,7 @@ exports.updateComment = updateComment;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1391,7 +1401,7 @@ exports.meReducer = meReducer;
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1411,13 +1421,13 @@ exports.tokenReducer = tokenReducer;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1434,7 +1444,7 @@ exports.saveToken = saveToken;
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1454,11 +1464,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(64), exports);
+__exportStar(__webpack_require__(65), exports);
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1501,10 +1511,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardsList = void 0;
 const react_1 = __importStar(__webpack_require__(0));
-const cardslist_sass_1 = __importDefault(__webpack_require__(65));
+const cardslist_sass_1 = __importDefault(__webpack_require__(66));
 const react_redux_1 = __webpack_require__(1);
 const axios_1 = __importDefault(__webpack_require__(3));
-const Card_1 = __webpack_require__(66);
+const Card_1 = __webpack_require__(67);
 const react_router_dom_1 = __webpack_require__(2);
 let endCounter = 0;
 function CardsList() {
@@ -1585,7 +1595,7 @@ exports.CardsList = CardsList;
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1596,7 +1606,7 @@ module.exports = {
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1607,11 +1617,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Card = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const card_sass_1 = __importDefault(__webpack_require__(67));
-const Menu_1 = __webpack_require__(68);
-const Controls_1 = __webpack_require__(86);
-const Content_1 = __webpack_require__(98);
-const Preview_1 = __webpack_require__(107);
+const card_sass_1 = __importDefault(__webpack_require__(68));
+const Menu_1 = __webpack_require__(69);
+const Controls_1 = __webpack_require__(87);
+const Content_1 = __webpack_require__(99);
+const Preview_1 = __webpack_require__(108);
 function Card({ id, dataPostUtc, title, avatar, author, previewImg, rating }) {
     return (react_1.default.createElement("li", { className: card_sass_1.default.card },
         react_1.default.createElement(Content_1.Content, { postID: id, dataPostUtc: dataPostUtc, title: title, avatar: avatar, author: author }),
@@ -1623,7 +1633,7 @@ exports.Card = Card;
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1634,7 +1644,7 @@ module.exports = {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1654,11 +1664,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(69), exports);
+__exportStar(__webpack_require__(70), exports);
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1669,10 +1679,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Menu = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const menu_sass_1 = __importDefault(__webpack_require__(70));
-const Dropdown_1 = __webpack_require__(71);
+const menu_sass_1 = __importDefault(__webpack_require__(71));
+const Dropdown_1 = __webpack_require__(72);
 const Text_1 = __webpack_require__(5);
-const MenuItemsList_1 = __webpack_require__(77);
+const MenuItemsList_1 = __webpack_require__(78);
 const Icon_1 = __webpack_require__(8);
 function Menu({ postID }) {
     return (react_1.default.createElement("div", { className: menu_sass_1.default.menu, id: postID },
@@ -1687,7 +1697,7 @@ exports.Menu = Menu;
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1700,7 +1710,7 @@ module.exports = {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1720,11 +1730,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(72), exports);
+__exportStar(__webpack_require__(73), exports);
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1735,8 +1745,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Dropdown = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const dropdown_sass_1 = __importDefault(__webpack_require__(73));
-const DropdownContent_1 = __webpack_require__(74);
+const dropdown_sass_1 = __importDefault(__webpack_require__(74));
+const DropdownContent_1 = __webpack_require__(75);
 const NOOP = () => { };
 function Dropdown({ postID, button, children, isOpen, onClose = NOOP, onOpen = NOOP }) {
     const [isDropdownOpen, setIsDropdownOpen] = react_1.default.useState(isOpen);
@@ -1758,7 +1768,7 @@ exports.Dropdown = Dropdown;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1768,7 +1778,7 @@ module.exports = {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1788,11 +1798,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(75), exports);
+__exportStar(__webpack_require__(76), exports);
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1827,7 +1837,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DropdownContent = void 0;
 const react_1 = __importStar(__webpack_require__(0));
 const react_dom_1 = __importDefault(__webpack_require__(11));
-const dropdowncontent_sass_1 = __importDefault(__webpack_require__(76));
+const dropdowncontent_sass_1 = __importDefault(__webpack_require__(77));
 function DropdownContent({ postID, onClick, children, onClose }) {
     const ref = (0, react_1.useRef)(null);
     (0, react_1.useEffect)(() => {
@@ -1852,7 +1862,7 @@ exports.DropdownContent = DropdownContent;
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1863,7 +1873,7 @@ module.exports = {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1883,11 +1893,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(78), exports);
+__exportStar(__webpack_require__(79), exports);
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1898,11 +1908,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuItemsList = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const menuitemslist_sass_1 = __importDefault(__webpack_require__(79));
+const menuitemslist_sass_1 = __importDefault(__webpack_require__(80));
 const Text_1 = __webpack_require__(5);
 const Icon_1 = __webpack_require__(8);
-const GenericList_1 = __webpack_require__(82);
-const generateRandomIndex_1 = __webpack_require__(84);
+const GenericList_1 = __webpack_require__(83);
+const generateRandomIndex_1 = __webpack_require__(85);
 const classnames_1 = __importDefault(__webpack_require__(4));
 const menuItemsList = (0, classnames_1.default)([menuitemslist_sass_1.default.menuItemsList], [menuitemslist_sass_1.default.menuItemsListMD]);
 const LIST = [
@@ -1951,7 +1961,7 @@ exports.MenuItemsList = MenuItemsList;
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1962,7 +1972,7 @@ module.exports = {
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1973,7 +1983,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Icon = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const icon_sass_1 = __importDefault(__webpack_require__(81));
+const icon_sass_1 = __importDefault(__webpack_require__(82));
 const Icons_1 = __webpack_require__(9);
 const classnames_1 = __importDefault(__webpack_require__(4));
 const icons = {
@@ -1992,7 +2002,7 @@ exports.Icon = Icon;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2005,7 +2015,7 @@ module.exports = {
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2025,11 +2035,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(83), exports);
+__exportStar(__webpack_require__(84), exports);
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2048,14 +2058,14 @@ exports.GenericList = GenericList;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateID = exports.assignID = exports.generateRandomString = void 0;
-const assoc_1 = __webpack_require__(85);
+const assoc_1 = __webpack_require__(86);
 // библиотека nanoid может генерировать случайные id
 const generateRandomString = () => Math.random().toString(36).substring(2, 15);
 exports.generateRandomString = generateRandomString;
@@ -2065,7 +2075,7 @@ exports.generateID = generateID;
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2079,7 +2089,7 @@ exports.assoc = assoc;
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2099,11 +2109,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(87), exports);
+__exportStar(__webpack_require__(88), exports);
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2114,10 +2124,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Controls = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const controls_sass_1 = __importDefault(__webpack_require__(88));
-const KarmaCounter_1 = __webpack_require__(89);
-const Comments_1 = __webpack_require__(92);
-const ActionButtons_1 = __webpack_require__(95);
+const controls_sass_1 = __importDefault(__webpack_require__(89));
+const KarmaCounter_1 = __webpack_require__(90);
+const Comments_1 = __webpack_require__(93);
+const ActionButtons_1 = __webpack_require__(96);
 function Controls({ rating }) {
     return (react_1.default.createElement("div", { className: controls_sass_1.default.controls },
         react_1.default.createElement(KarmaCounter_1.KarmaCounter, { rating: rating }),
@@ -2128,7 +2138,7 @@ exports.Controls = Controls;
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2138,7 +2148,7 @@ module.exports = {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2158,11 +2168,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(90), exports);
+__exportStar(__webpack_require__(91), exports);
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2173,7 +2183,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.KarmaCounter = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const karmacounter_sass_1 = __importDefault(__webpack_require__(91));
+const karmacounter_sass_1 = __importDefault(__webpack_require__(92));
 function KarmaCounter({ rating }) {
     return (react_1.default.createElement("div", { className: karmacounter_sass_1.default.karmaCounter },
         react_1.default.createElement("button", { className: karmacounter_sass_1.default.up },
@@ -2188,7 +2198,7 @@ exports.KarmaCounter = KarmaCounter;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2202,7 +2212,7 @@ module.exports = {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2222,11 +2232,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(93), exports);
+__exportStar(__webpack_require__(94), exports);
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2237,7 +2247,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Comments = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const comments_sass_1 = __importDefault(__webpack_require__(94));
+const comments_sass_1 = __importDefault(__webpack_require__(95));
 function Comments() {
     return (react_1.default.createElement("button", { className: comments_sass_1.default.commentsButton },
         react_1.default.createElement("svg", { width: "15", height: "15", viewBox: "0 0 15 15", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
@@ -2248,7 +2258,7 @@ exports.Comments = Comments;
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2259,7 +2269,7 @@ module.exports = {
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2279,11 +2289,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(96), exports);
+__exportStar(__webpack_require__(97), exports);
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2294,7 +2304,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActionButtons = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const actionbuttons_sass_1 = __importDefault(__webpack_require__(97));
+const actionbuttons_sass_1 = __importDefault(__webpack_require__(98));
 function ActionButtons() {
     return (react_1.default.createElement("div", { className: actionbuttons_sass_1.default.actions },
         react_1.default.createElement("button", { className: actionbuttons_sass_1.default.shareButton },
@@ -2310,7 +2320,7 @@ exports.ActionButtons = ActionButtons;
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2322,7 +2332,7 @@ module.exports = {
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2342,11 +2352,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(99), exports);
+__exportStar(__webpack_require__(100), exports);
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2357,8 +2367,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Content = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const content_sass_1 = __importDefault(__webpack_require__(100));
-const CardData_1 = __webpack_require__(101);
+const content_sass_1 = __importDefault(__webpack_require__(101));
+const CardData_1 = __webpack_require__(102);
 const react_router_dom_1 = __webpack_require__(2);
 function Content({ postID, avatar, author, dataPostUtc, title }) {
     const link = "/posts/" + postID;
@@ -2371,7 +2381,7 @@ exports.Content = Content;
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2384,7 +2394,7 @@ module.exports = {
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2404,11 +2414,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(102), exports);
+__exportStar(__webpack_require__(103), exports);
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2419,8 +2429,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardData = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const carddata_sass_1 = __importDefault(__webpack_require__(103));
-const UserData_1 = __webpack_require__(104);
+const carddata_sass_1 = __importDefault(__webpack_require__(104));
+const UserData_1 = __webpack_require__(105);
 function CardData({ avatar, author, dataPostUtc }) {
     const date = new Date(Number(dataPostUtc) * 1000);
     return (react_1.default.createElement("div", { className: carddata_sass_1.default.metaData },
@@ -2433,7 +2443,7 @@ exports.CardData = CardData;
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2445,7 +2455,7 @@ module.exports = {
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2465,11 +2475,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(105), exports);
+__exportStar(__webpack_require__(106), exports);
 
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2480,7 +2490,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserData = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const userdata_sass_1 = __importDefault(__webpack_require__(106));
+const userdata_sass_1 = __importDefault(__webpack_require__(107));
 function UserData({ avatar, author }) {
     return (react_1.default.createElement("div", { className: userdata_sass_1.default.userLink },
         react_1.default.createElement("img", { className: userdata_sass_1.default.avatar, src: avatar, alt: "avatar" }),
@@ -2490,7 +2500,7 @@ exports.UserData = UserData;
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2502,7 +2512,7 @@ module.exports = {
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2522,11 +2532,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(108), exports);
+__exportStar(__webpack_require__(109), exports);
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2537,7 +2547,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Preview = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const preview_sass_1 = __importDefault(__webpack_require__(109));
+const preview_sass_1 = __importDefault(__webpack_require__(110));
 function Preview({ previewImg }) {
     return (react_1.default.createElement("div", { className: preview_sass_1.default.preview },
         react_1.default.createElement("img", { src: previewImg, alt: "preview", className: preview_sass_1.default.previewImg })));
@@ -2546,7 +2556,7 @@ exports.Preview = Preview;
 
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2557,7 +2567,7 @@ module.exports = {
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2577,11 +2587,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(111), exports);
+__exportStar(__webpack_require__(112), exports);
 
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2592,7 +2602,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NoMatch = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const nomatch_sass_1 = __importDefault(__webpack_require__(112));
+const nomatch_sass_1 = __importDefault(__webpack_require__(113));
 const react_router_dom_1 = __webpack_require__(2);
 function NoMatch() {
     let location = (0, react_router_dom_1.useLocation)();
@@ -2612,7 +2622,7 @@ exports.NoMatch = NoMatch;
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2623,7 +2633,7 @@ module.exports = {
 
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2643,11 +2653,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(114), exports);
+__exportStar(__webpack_require__(115), exports);
 
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2682,10 +2692,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Post = void 0;
 const react_1 = __importStar(__webpack_require__(0));
 const react_dom_1 = __importDefault(__webpack_require__(11));
-const post_sass_1 = __importDefault(__webpack_require__(115));
-const CommentsWrapper_1 = __webpack_require__(116);
-const CommentForm_1 = __webpack_require__(134);
+const post_sass_1 = __importDefault(__webpack_require__(116));
+const CommentsWrapper_1 = __webpack_require__(117);
+const CommentForm_1 = __webpack_require__(135);
 const react_router_dom_1 = __webpack_require__(2);
+const recoil_1 = __webpack_require__(12);
 function Post() {
     const ref = (0, react_1.useRef)(null);
     let history = (0, react_router_dom_1.useNavigate)();
@@ -2712,14 +2723,15 @@ function Post() {
             react_1.default.createElement("p", null, "\u0414\u0430\u043B\u0435\u043A\u043E-\u0434\u0430\u043B\u0435\u043A\u043E \u0437\u0430 \u0441\u043B\u043E\u0432\u0435\u0441\u043D\u044B\u043C\u0438 \u0433\u043E\u0440\u0430\u043C\u0438 \u0432 \u0441\u0442\u0440\u0430\u043D\u0435 \u0433\u043B\u0430\u0441\u043D\u044B\u0445 \u0438 \u0441\u043E\u0433\u043B\u0430\u0441\u043D\u044B\u0445 \u0436\u0438\u0432\u0443\u0442 \u0440\u044B\u0431\u043D\u044B\u0435 \u0442\u0435\u043A\u0441\u0442\u044B. \u041A\u043E\u0442\u043E\u0440\u043E\u0435 \u0437\u0430\u0433\u043B\u0430\u0432\u043D\u044B\u0445 \u0440\u0435\u0447\u044C\u044E \u0440\u0430\u0437 \u043D\u0430 \u0431\u0435\u0440\u0435\u0433\u0443 \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0430\u043B \u0440\u0435\u0448\u0438\u043B\u0430 \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0435\u043D\u0438\u044F!"),
             react_1.default.createElement("p", null, "\u0414\u0430\u043B\u0435\u043A\u043E-\u0434\u0430\u043B\u0435\u043A\u043E \u0437\u0430 \u0441\u043B\u043E\u0432\u0435\u0441\u043D\u044B\u043C\u0438 \u0433\u043E\u0440\u0430\u043C\u0438 \u0432 \u0441\u0442\u0440\u0430\u043D\u0435 \u0433\u043B\u0430\u0441\u043D\u044B\u0445 \u0438 \u0441\u043E\u0433\u043B\u0430\u0441\u043D\u044B\u0445 \u0436\u0438\u0432\u0443\u0442 \u0440\u044B\u0431\u043D\u044B\u0435 \u0442\u0435\u043A\u0441\u0442\u044B. \u041A\u043E\u0442\u043E\u0440\u043E\u0435 \u0437\u0430\u0433\u043B\u0430\u0432\u043D\u044B\u0445 \u0440\u0435\u0447\u044C\u044E \u0440\u0430\u0437 \u043D\u0430 \u0431\u0435\u0440\u0435\u0433\u0443 \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0430\u043B \u0440\u0435\u0448\u0438\u043B\u0430 \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0435\u043D\u0438\u044F!"),
             react_1.default.createElement("p", null, "\u0414\u0430\u043B\u0435\u043A\u043E-\u0434\u0430\u043B\u0435\u043A\u043E \u0437\u0430 \u0441\u043B\u043E\u0432\u0435\u0441\u043D\u044B\u043C\u0438 \u0433\u043E\u0440\u0430\u043C\u0438 \u0432 \u0441\u0442\u0440\u0430\u043D\u0435 \u0433\u043B\u0430\u0441\u043D\u044B\u0445 \u0438 \u0441\u043E\u0433\u043B\u0430\u0441\u043D\u044B\u0445 \u0436\u0438\u0432\u0443\u0442 \u0440\u044B\u0431\u043D\u044B\u0435 \u0442\u0435\u043A\u0441\u0442\u044B. \u041A\u043E\u0442\u043E\u0440\u043E\u0435 \u0437\u0430\u0433\u043B\u0430\u0432\u043D\u044B\u0445 \u0440\u0435\u0447\u044C\u044E \u0440\u0430\u0437 \u043D\u0430 \u0431\u0435\u0440\u0435\u0433\u0443 \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0430\u043B \u0440\u0435\u0448\u0438\u043B\u0430 \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0435\u043D\u0438\u044F!")),
-        react_1.default.createElement(CommentForm_1.CommentForm, null),
+        react_1.default.createElement(recoil_1.RecoilRoot, null,
+            react_1.default.createElement(CommentForm_1.CommentForm, null)),
         react_1.default.createElement(CommentsWrapper_1.CommentsWrapper, { postID: id })), node);
 }
 exports.Post = Post;
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2731,7 +2743,7 @@ module.exports = {
 
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2751,11 +2763,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(117), exports);
+__exportStar(__webpack_require__(118), exports);
 
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2766,9 +2778,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentsWrapper = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const commentsWrapper_sass_1 = __importDefault(__webpack_require__(118));
-const useCommentsData_1 = __webpack_require__(119);
-const Comment_1 = __webpack_require__(120);
+const commentsWrapper_sass_1 = __importDefault(__webpack_require__(119));
+const useCommentsData_1 = __webpack_require__(120);
+const Comment_1 = __webpack_require__(121);
 function CommentsWrapper({ postID }) {
     const [data] = (0, useCommentsData_1.useCommentsData)(postID);
     return (react_1.default.createElement("ul", { className: commentsWrapper_sass_1.default.list }, data.map(comment => (react_1.default.createElement(Comment_1.Comment, { key: comment.id, id: comment.id, dataCommentUtc: comment.dataCommentUtc, text: comment.text, author: comment.author, rating: comment.rating })))));
@@ -2777,7 +2789,7 @@ exports.CommentsWrapper = CommentsWrapper;
 
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2787,7 +2799,7 @@ module.exports = {
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2829,7 +2841,7 @@ exports.useCommentsData = useCommentsData;
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2840,10 +2852,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Comment = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const comment_sass_1 = __importDefault(__webpack_require__(121));
-const Data_1 = __webpack_require__(122);
-const Controls_1 = __webpack_require__(125);
-const Counter_1 = __webpack_require__(131);
+const comment_sass_1 = __importDefault(__webpack_require__(122));
+const Data_1 = __webpack_require__(123);
+const Controls_1 = __webpack_require__(126);
+const Counter_1 = __webpack_require__(132);
 function Comment({ id, author, text, rating, dataCommentUtc }) {
     return (react_1.default.createElement("div", { className: comment_sass_1.default.body },
         react_1.default.createElement(Counter_1.Counter, { rating: rating }),
@@ -2856,7 +2868,7 @@ exports.Comment = Comment;
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2867,7 +2879,7 @@ module.exports = {
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2887,11 +2899,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(123), exports);
+__exportStar(__webpack_require__(124), exports);
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2902,7 +2914,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Data = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const data_sass_1 = __importDefault(__webpack_require__(124));
+const data_sass_1 = __importDefault(__webpack_require__(125));
 function Data({ author, dataCommentUtc }) {
     const date = new Date(Number(dataCommentUtc) * 1000);
     return (react_1.default.createElement("div", { className: data_sass_1.default.data },
@@ -2913,7 +2925,7 @@ exports.Data = Data;
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -2924,7 +2936,7 @@ module.exports = {
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2944,11 +2956,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(126), exports);
+__exportStar(__webpack_require__(127), exports);
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2982,9 +2994,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Controls = void 0;
 const react_1 = __importStar(__webpack_require__(0));
-const controls_sass_1 = __importDefault(__webpack_require__(127));
+const controls_sass_1 = __importDefault(__webpack_require__(128));
 const Icon_1 = __webpack_require__(8);
-const ControledForm_1 = __webpack_require__(128);
+const ControledForm_1 = __webpack_require__(129);
 function Controls({ postID, author }) {
     const [isFormOpened, setIsFormOpened] = (0, react_1.useState)(false);
     return (react_1.default.createElement("div", { className: controls_sass_1.default.controls },
@@ -3004,7 +3016,7 @@ exports.Controls = Controls;
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -3015,7 +3027,7 @@ module.exports = {
 
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3035,11 +3047,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(129), exports);
+__exportStar(__webpack_require__(130), exports);
 
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3073,7 +3085,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ControledForm = void 0;
 const react_1 = __importStar(__webpack_require__(0));
-const controledform_sass_1 = __importDefault(__webpack_require__(130));
+const controledform_sass_1 = __importDefault(__webpack_require__(131));
 function ControledForm({ author, onClose }) {
     const [value, setValue] = (0, react_1.useState)(`${author}, `);
     const ref = (0, react_1.useRef)(null);
@@ -3097,7 +3109,7 @@ exports.ControledForm = ControledForm;
 
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -3109,7 +3121,7 @@ module.exports = {
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3129,11 +3141,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(132), exports);
+__exportStar(__webpack_require__(133), exports);
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3144,7 +3156,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Counter = void 0;
 const react_1 = __importDefault(__webpack_require__(0));
-const counter_sass_1 = __importDefault(__webpack_require__(133));
+const counter_sass_1 = __importDefault(__webpack_require__(134));
 function Counter({ rating }) {
     return (react_1.default.createElement("div", { className: counter_sass_1.default.karmaCounter },
         react_1.default.createElement("button", { className: counter_sass_1.default.up },
@@ -3159,7 +3171,7 @@ exports.Counter = Counter;
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -3170,30 +3182,6 @@ module.exports = {
 	"down": "counter__down--3mzd3",
 	"up": "counter__up--N0u1_"
 };
-
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(135), exports);
 
 
 /***/ }),
@@ -3213,35 +3201,45 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
 }));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(136), exports);
+
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentForm = void 0;
-const react_1 = __importStar(__webpack_require__(0));
-const commentform_sass_1 = __importDefault(__webpack_require__(136));
-const react_hook_form_1 = __webpack_require__(137);
+const react_1 = __importDefault(__webpack_require__(0));
+const commentform_sass_1 = __importDefault(__webpack_require__(137));
+const react_hook_form_1 = __webpack_require__(138);
+const recoil_1 = __webpack_require__(12);
 function CommentForm() {
     var _a, _b;
+    const commentText = (0, recoil_1.atom)({
+        key: "commentText",
+        default: "Hello world!",
+    });
     const { register, handleSubmit, formState: { errors }, } = (0, react_hook_form_1.useForm)({ defaultValues: { comment: "Hello! " } });
-    const [value, setValue] = (0, react_1.useState)("");
+    const [value, setValue] = (0, recoil_1.useRecoilState)(commentText);
+    const onChange = (event) => {
+        setValue(event.target.value);
+    };
     return (react_1.default.createElement("form", { className: commentform_sass_1.default.form, onSubmit: handleSubmit(data => {
             setValue(data.comment);
             alert("Данные отправлены: " + data.comment);
         }) },
-        react_1.default.createElement("textarea", Object.assign({}, register("comment", { minLength: { value: 7, message: "Введите минимум 7 символов." } }), { className: commentform_sass_1.default.input, "aria-invalid": ((_a = errors.comment) === null || _a === void 0 ? void 0 : _a.message) ? "true" : undefined })),
+        react_1.default.createElement("p", null, value),
+        react_1.default.createElement("textarea", Object.assign({}, register("comment", { minLength: { value: 7, message: "Введите минимум 7 символов." } }), { onChange: onChange, className: commentform_sass_1.default.input, "aria-invalid": ((_a = errors.comment) === null || _a === void 0 ? void 0 : _a.message) ? "true" : undefined })),
         react_1.default.createElement("p", null, (_b = errors.comment) === null || _b === void 0 ? void 0 : _b.message),
         react_1.default.createElement("button", { type: "submit", className: commentform_sass_1.default.button }, "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C")));
 }
@@ -3249,7 +3247,7 @@ exports.CommentForm = CommentForm;
 
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -3261,7 +3259,7 @@ module.exports = {
 
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-hook-form");

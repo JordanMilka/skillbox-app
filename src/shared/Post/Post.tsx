@@ -4,6 +4,7 @@ import styles from "./post.sass"
 import { CommentsWrapper } from "./CommentsWrapper"
 import { CommentForm } from "./CommentForm"
 import { useNavigate, useParams } from "react-router-dom"
+import { RecoilRoot } from "recoil"
 
 type TParams = {
 	id: string
@@ -41,7 +42,9 @@ export function Post() {
 				<p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Которое заглавных речью раз на берегу предупреждал решила предложения!</p>
 				<p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Которое заглавных речью раз на берегу предупреждал решила предложения!</p>
 			</div>
-			<CommentForm />
+			<RecoilRoot>
+				<CommentForm />
+			</RecoilRoot>
 			<CommentsWrapper postID={id} />
 		</div>,
 		node
